@@ -1,0 +1,167 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class MenuWithPanels {
+    private JFrame frame;
+    private JPanel contentPanel;
+
+    public MenuWithPanels extends JFrame() {
+        // Create the JFrame
+		private JLabel device_ip=new JLabel("Device ip-address:");
+		private JTextField device_ip_txt=new JTextField(15);
+		private JLabel device_mac=new JLabel("Device mac-address:");
+		private JTextField device_mac_txt=new JTextField(17);
+		private JLabel device_model=new JLabel("Device model:");
+		private JTextField device_model_txt=new JTextField(8);
+		private JLabel device_manf=new JLabel("Device Manufacturer:");
+		private JTextField device_manf_txt=new JTextField(10);
+		private JLabel device_exp=new JLabel("Expiration date:");
+		private JTextField device_exp_txt=new JTextField(10);
+		private JTextField device_manf_txt=new JTextField(10);
+		private JLabel device_inst=new JLabel("Installation date:");
+		private JTextField device_inst_txt=new JTextField(10);
+		private JLabel device_warr=new JLabel("Warranty period:");
+		private JTextField device_warr_txt=new JTextField(4);
+		private JLabel device_fromip=new JLabel("Device From ip-address:");
+		private JTextField device_fromip_txt=new JTextField(15);
+		private JLabel device_toip=new JLabel("Device To ip-address:");
+		private JTextField device_toip_txt=new JTextField(15);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Create the content panel
+        contentPanel = new JPanel(new CardLayout());
+
+        // Create the menu bar
+        JMenuBar menuBar = new JMenuBar();
+
+        // Create the menu options
+        JMenu menu1 = new JMenu("Device");
+        JMenu menu2 = new JMenu("Warranty");
+        JMenu menu3 = new JMenu("Connections");
+        JMenu menu4 = new JMenu("Users");
+        JMenu menu5 = new JMenu("Service");
+
+        // Create the menu items
+        JMenuItem menuItem1 = new JMenuItem("Device");
+        JMenuItem menuItem2 = new JMenuItem("Warranty");
+        JMenuItem menuItem3 = new JMenuItem("Connections");
+        JMenuItem menuItem4 = new JMenuItem("Users");
+        JMenuItem menuItem5 = new JMenuItem("Service");
+		
+
+        // Add the menu items to the menus
+        menu1.add(menuItem1);
+        menu2.add(menuItem2);
+        menu3.add(menuItem3);
+		menu4.add(menuItem4);
+		menu5.add(menuItem5);
+        // Add the menus to the menu bar
+        menuBar.add(menu1);
+        menuBar.add(menu2);
+        menuBar.add(menu3);
+        menuBar.add(menu4);
+        menuBar.add(menu5);
+
+        // Set the menu bar to the JFrame
+        frame.setJMenuBar(menuBar);
+
+        // Create the panels
+        JPanel panel1 = new JPanel();
+        JPanel panel2 = new JPanel();
+        JPanel panel3 = new JPanel();
+		JPanel panel4 = new JPanel();
+        JPanel panel5 = new JPanel();
+		panel1.setLayout(new GridLayout(4,1));
+		panel2.setLayout(new GridLayout(4,1));
+		panel3.setLayout(new GridLayout(2,1));
+        // Set the background colors of the panels for visibility
+		JPanel pnl1=new JPanel();
+		JPanel pnl2=new JPanel();
+		JPanel pnl3=new JPanel();
+		JPanel pnl4=new JPanel();
+
+		pnl1.add(device_ip);
+		pnl1.add(device_ip_txt);
+		pnl2.add(device_mac);
+		pnl2.add(device_mac_txt);
+		pnl3.add(device_model);
+		pnl3.add(device_model_txt);
+		pnl4.add(device_manf);
+		pnl4.add(device_manf_txt);
+		panel1.add(pnl1);
+		panel1.add(pnl2);
+		panel1.add(pnl3);
+		panel1.add(pnl4);
+		JPanel pnl5=new JPanel();
+		JPanel pnl6=new JPanel();
+		JPanel pnl7=new JPanel();
+		JPanel pnl8=new JPanel();
+		pnl5.add(device_mac);
+		pnl5.add(device_mac_txt);
+		pnl6.add(device_exp);
+		pnl6.add(device_exp_txt);
+		pnl7.add(device_inst);
+		pnl7.add(device_inst_txt);
+		pnl8.add(device_warr);
+		pnl8.add(device_warr_txt);
+		panel2.add(pnl5);
+		panel2.add(pnl6);
+		panel2.add(pnl7);
+		panel2.add(pnl8);
+		JPanel pnl9=new JPanel();
+		JPanel pnl10=new JPanel();
+		pnl9.add(device_fromip);
+		pnl9.add(device_fromip_txt);
+		pnl9.add(device_toip);
+		pnl9.add(device_toip_txtip);
+		panel3.add(pnl9);
+		panel3.add(pnl10);
+	
+        // Add the panels to the content panel
+        contentPanel.add(panel1, "Panel-d");
+        contentPanel.add(panel2, "Panel-w");
+        contentPanel.add(panel3, "Panel-c");
+		contentPanel.add(panel4, "Panel-u");
+        contentPanel.add(panel5, "Panel-s");
+
+
+        // Add action listeners to the menu items
+        menuItem1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                CardLayout cardLayout = (CardLayout) contentPanel.getLayout();
+                cardLayout.show(contentPanel, "Panel 1");
+            }
+        });
+
+        menuItem2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                CardLayout cardLayout = (CardLayout) contentPanel.getLayout();
+                cardLayout.show(contentPanel, "Panel 2");
+            }
+        });
+
+        menuItem3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                CardLayout cardLayout = (CardLayout) contentPanel.getLayout();
+                cardLayout.show(contentPanel, "Panel 3");
+            }
+        });
+
+        // Set the content panel to the JFrame
+        setContentPane(contentPanel);
+
+        // Set the size and visibility of the JFrame
+        setSize(400, 300);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new MenuWithPanels();
+            }
+        });
+    }
+}
